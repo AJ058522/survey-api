@@ -32,15 +32,8 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'required' => 'El campo :attribute es obligatorio.',
-            'string'    => 'El campo :attribute debe ser del tipo texto.'
-        ];
-    }
-
-    public function attributes()
-    {
-        return [
-            'password' => 'Contraseña'
+            'required' => 'The field :attribute is required.',
+            'string'    => 'The field :attribute must be a string.'
         ];
     }
 }
