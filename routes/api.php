@@ -3,7 +3,10 @@
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Authentication\LogoutController;
 use App\Http\Controllers\Authentication\SignupController;
-
+use App\Http\Controllers\Surveys\CompleteSurveyController;
+use App\Http\Controllers\Surveys\GetMissingResponsesController;
+use App\Http\Controllers\Surveys\GetOneSurveyController;
+use App\Http\Controllers\Surveys\GetSurveyResponsesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +33,12 @@ Route::group([
 
     Route::prefix('auth')->group(function () {
         Route::get('/logout', [LogoutController::class, 'logout']);
+    });
+
+    Route::prefix('surveys')->group(function () {
+        Route::get('/{survey}', [GetOneSurveyController::class, 'getOne']);
+        Route::get('getMissingResponses/{surveyId}', [GetMissingResponsesController::class, 'getMissingResponses']);
+        Route::get('getSurveyResponses/{surveyId}', [GetSurveyResponsesController::class, 'getResponses']);
+        Route::post('/completeSurvey', [CompleteSurveyController::class, 'completeSurvey']);
     });
 });
