@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-use App\Models\User;
-
-class CreateUsersSeeder extends Seeder
+class CreateRolesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,11 +15,12 @@ class CreateUsersSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'Antonio Lucero',
-            'email' => 'ajbuch22@gmail.com',
-            'password' => bcrypt('1234'),
-            'role_id' => 1
+        Role::create([
+            'name' => 'Administrator'
+        ]);
+
+        Role::create([
+            'name' => 'Regular'
         ]);
     }
 }

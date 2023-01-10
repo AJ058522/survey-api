@@ -14,6 +14,7 @@ class LoginController extends ApiController
 
     if (Auth::attempt($credentials)) {
       $user = $request->user();
+      $user->role;
       $user->token = $user->createToken('Personal Access');
       return $this->successResponse($user, 200);
     }

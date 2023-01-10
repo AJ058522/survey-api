@@ -37,7 +37,7 @@ Route::group([
 
     Route::prefix('surveys')->group(function () {
         Route::get('/{survey}', [GetOneSurveyController::class, 'getOne']);
-        Route::get('getMissingResponses/{surveyId}', [GetMissingResponsesController::class, 'getMissingResponses']);
+        Route::get('getMissingResponses/{surveyId}', [GetMissingResponsesController::class, 'getMissingResponses'])->middleware('isAdmin');
         Route::get('getSurveyResponses/{surveyId}', [GetSurveyResponsesController::class, 'getResponses']);
         Route::post('/completeSurvey', [CompleteSurveyController::class, 'completeSurvey']);
     });
