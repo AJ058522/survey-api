@@ -34,21 +34,8 @@ class SignupRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'confirmed' => 'El campo :attribute no coincide con la confirmación de :attribute.',
-            'email' => 'El campo :attribute debe ser del tipo email.',
-            'max' => 'El campo :attribute excede el límite de :max caracteres.',
-            'required' => 'El campo :attribute es obligatorio.',
-            'string' => 'El campo :attribute debe ser del tipo texto.',
-            'unique' => 'El :attribute ya se encuentra registrado.'
-        ];
-    }
-
-    public function attributes()
-    {
-        return [
-            'name' => 'Nombre',
-            'password' => 'Contraseña',
-            'password_confirmation' => 'Confirmación de Contraseña',
+            'max' => 'The field :attribute must not be greater than :max characters.',
+            'required' => 'The field :attribute is required.'
         ];
     }
 }
