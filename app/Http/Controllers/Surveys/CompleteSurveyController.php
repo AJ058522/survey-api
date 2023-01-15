@@ -3,16 +3,24 @@
 namespace App\Http\Controllers\Surveys;
 
 use App\Http\Controllers\ApiController;
+use App\Interfaces\SurveyRepositoryInterface;
 use App\Http\Requests\Surveys\CompleteSurveyRequest;
-use App\Models\SurveyResponse;
 
 class CompleteSurveyController extends ApiController
 {
+
+    private SurveyRepositoryInterface $surveyRepository;
+
+    public function __construct(SurveyRepositoryInterface $surveyRepository)
+    {
+        $this->surveyRepository = $surveyRepository;
+    }
+
     public function completeSurvey(CompleteSurveyRequest $request)
     {
         $validated = $request->validated();
         $data = $this->getFormattedResponses($validated['survey_responses']);
-        $response = SurveyResponse::insert($data);
+        $response =  $this->surveyRepository->completeSurvey($data);
         return $this->successResponse($data, 201);
     }
 
